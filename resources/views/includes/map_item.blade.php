@@ -33,13 +33,13 @@
                     Điện thoại
                 </th>
                 <td>
-                    <a class="phone-contact" title="Click trên điện thoại để gọi trực tiếp"
-                       href="tel:0858658858"><i
-                            class="fa fa-phone-alt"></i> 0858 658 858
+                    <a class="phone-contact menu-active" title="Click trên điện thoại để gọi trực tiếp"
+                       href="tel:0866776636"><i
+                            class="fa fa-phone-alt"></i> 08 6677 6636
                     </a>
-                    - <a class="phone-contact" title="Click trên điện thoại để gọi trực tiếp"
-                         href="tel:0987266088"><i
-                            class="fa fa-phone-alt"></i> 0987 266 088
+                    <a class="phone-contact menu-active" title="Click để truy cập Fanpage" target="_blank"
+                         href="https://www.facebook.com/DuongBiNano"><i
+                            class="fa fa-facebook"></i> Fanpage
                     </a>
                 </td>
             </tr>
@@ -54,12 +54,12 @@
     </div>
     <div class="col-md-7 col-sm-7 col-12 ">
         <div class=" ">
-            <a href="#" class="iframe-link">
-                <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d930.9075381296162!2d105.70166062922902!3d21.04747955075478!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3134554107b4422d%3A0x8a39477f7f29b1f6!2zxJDhu5MgdGjhu50gdMaw4bujbmcgcGjhuq10IE5ow6JuIFRow7p5!5e0!3m2!1sen!2sus!4v1618202086224!5m2!1sen!2sus"
-                    width="600" height="450" style="border:0;" allowfullscreen=""
-                    loading="lazy"></iframe>
-            </a>
+{{--            <a href="#" class="iframe-link">--}}
+{{--                <iframe--}}
+{{--                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d930.9075381296162!2d105.70166062922902!3d21.04747955075478!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3134554107b4422d%3A0x8a39477f7f29b1f6!2zxJDhu5MgdGjhu50gdMaw4bujbmcgcGjhuq10IE5ow6JuIFRow7p5!5e0!3m2!1sen!2sus!4v1618202086224!5m2!1sen!2sus"--}}
+{{--                    width="600" height="450" style="border:0;" allowfullscreen=""--}}
+{{--                    loading="lazy"></iframe>--}}
+{{--            </a>--}}
         </div>
     </div>
 </div>

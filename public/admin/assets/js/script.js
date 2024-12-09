@@ -12,6 +12,10 @@ function string_to_slug (str) {
 function handleCkeditor() {
     $('textarea').each(function () {
         var textarea_id = $(this).attr('id');
+        console.log(textarea_id)
+        if (textarea_id == 'name') {
+            return;
+        }
         CKEDITOR.replace(textarea_id, {
             filebrowserBrowseUrl: url_base + '/admin/assets/ckfinder/ckfinder.html',
             filebrowserUploadUrl: url_base + '{{ url(' / ') }}/admin/assets/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files'
@@ -95,4 +99,11 @@ $(document).ready(function () {
     // setTimeout(function () {
     //     $('.alert').fadeOut(2000);
     // }, 4000);
+
+    $('input[name=name]').keyup(function () {
+        var name = $(this).val();
+        var seo_keyword = name.replace(/ /g, ",");
+        $('input[name=seo_title], input[name=seo_description]').val(name);
+        $('input[name=seo_keywords]').val(seo_keyword);
+    })
 });

@@ -9,6 +9,12 @@
                    name="name" class="form-control" required value="{{ old('name') }}"/>
         </div>
 
+        <div class="form-group">
+            <label for="name">Key</label>
+            <input type="text" id="key"
+                   name="key" class="form-control" required value="{{ old('key') }}"/>
+        </div>
+
 {{--        <div class="form-group">--}}
 {{--            <label for="category_id">Chọn danh mục</label>--}}
 {{--            <select name="category_id" id="category_id" class="form-control">--}}

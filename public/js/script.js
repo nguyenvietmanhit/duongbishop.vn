@@ -660,5 +660,34 @@ $(document).ready(function () {
 
     $('[data-toggle="tooltip"]').tooltip();
 
-    $('.swipebox').swipebox();
+    // $('.swipebox').swipebox();
+
+    $('.form-search select').change(function () {
+        // $('.form-search').submit();
+    })
+
+    var getUrlParameter = function getUrlParameter(sParam) {
+        var sPageURL = window.location.search.substring(1),
+            sURLVariables = sPageURL.split('&'),
+            sParameterName,
+            i;
+
+        for (i = 0; i < sURLVariables.length; i++) {
+            sParameterName = sURLVariables[i].split('=');
+
+            if (sParameterName[0] === sParam) {
+                return typeof sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+            }
+        }
+        return false;
+    };
+
+    var search = getUrlParameter('search');
+    var page = getUrlParameter('page');
+    if (search || page) {
+        $([document.documentElement, document.body]).animate({
+            scrollTop: $(".form-search").offset().top - 200
+        }, 200);
+    }
+
 });

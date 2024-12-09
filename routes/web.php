@@ -183,15 +183,21 @@ Route::middleware([AnonymousCustom::class])->group(function () {
 
     Route::get('/', [HomeController::class, 'index']);
     Route::get('gioi-thieu.html', [HomeController::class, 'intro']);
+    Route::get('test-info', [HomeController::class, 'testInfo']);
     Route::get('lien-he.html', [HomeController::class, 'contact']);
     Route::get('ban-do.html', [HomeController::class, 'map']);
+
+    Route::get('huong-dan-mua-acc.html', [HomeController::class, 'guideBuyAcc']);
+    Route::get('huong-dan-thay-doi-tttk.html', [HomeController::class, 'changeInfoAcc']);
+    Route::get('can-ban-acc.html', [HomeController::class, 'needSellAcc']);
 
     Route::get('user/login', [FrontendUserController::class, 'login']);
     Route::post('user/loginProcess', [FrontendUserController::class, 'loginProcess']);
     // Product
-    Route::get('san-pham.html', [\App\Http\Controllers\Frontend\ProductController::class, 'allProduct']);
-    Route::get('tim-kiem-san-pham.html', [\App\Http\Controllers\Frontend\ProductController::class, 'allProduct']);
-    Route::get('san-pham/{product_name}-{product_id}.html', [\App\Http\Controllers\Frontend\ProductController::class, 'detail'])
+    Route::get('danh-sach-acc.html', [\App\Http\Controllers\Frontend\ProductController::class, 'allProduct']);
+    Route::get('acc-da-ban.html', [\App\Http\Controllers\Frontend\ProductController::class, 'productSold']);
+    Route::get('tim-kiem-danh-sach-acc.html', [\App\Http\Controllers\Frontend\ProductController::class, 'allProduct']);
+    Route::get('chi-tiet-acc-{product_name}-{product_id}.html', [\App\Http\Controllers\Frontend\ProductController::class, 'detail'])
         ->where('product_name', '^([0-9A-Za-z-]+)$');
 
     Route::get('danh-muc/{category_name}-{category_id_id}.html', [\App\Http\Controllers\Frontend\ProductController::class, 'allProductByCategory'])

@@ -32,8 +32,8 @@ $config['authentication'] = function () {
 /*============================ License Key ============================================*/
 // https://ckeditor.com/docs/ckfinder/ckfinder3-php/configuration.html#configuration_options_licenseKey
 
-$config['licenseName'] = 'localhost';
-$config['licenseKey']  = 'CWNW2H23SJDNDTS8RBTB4WSQY4NH2';
+$config['licenseName'] = 'duongbishop.vn';
+$config['licenseKey']  = 'CYJYGQQ9KXGW8LWHKGEDU9S32QFN8';
 
 /*============================ CKFinder Internal Directory ============================*/
 // https://ckeditor.com/docs/ckfinder/ckfinder3-php/configuration.html#configuration_options_privateDir
@@ -81,7 +81,7 @@ $config['defaultResourceTypes'] = '';
 $config['resourceTypes'][] = array(
     'name'              => 'Files', // Single quotes not allowed.
     'directory'         => 'files',
-    'maxSize'           => 0,
+    'maxSize'           => '10M',
     'allowedExtensions' => '7z,aiff,asf,avi,bmp,csv,doc,docx,fla,flv,gif,gz,gzip,jpeg,jpg,mid,mov,mp3,mp4,mpc,mpeg,mpg,ods,odt,pdf,png,ppt,pptx,qt,ram,rar,rm,rmi,rmvb,rtf,sdc,swf,sxc,sxw,tar,tgz,tif,tiff,txt,vsd,wav,wma,wmv,xls,xlsx,zip',
     'deniedExtensions'  => '',
     'backend'           => 'default'
@@ -90,7 +90,7 @@ $config['resourceTypes'][] = array(
 $config['resourceTypes'][] = array(
     'name'              => 'Images',
     'directory'         => 'images',
-    'maxSize'           => 0,
+    'maxSize'           => '10M',
     'allowedExtensions' => 'bmp,gif,jpeg,jpg,png',
     'deniedExtensions'  => '',
     'backend'           => 'default'

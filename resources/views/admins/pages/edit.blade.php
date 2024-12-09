@@ -10,6 +10,12 @@
                    name="name" class="form-control" required value="{{ old('name') ? old('name') : $page->name }}"/>
         </div>
 
+        <div class="form-group">
+            <label for="name">Key</label>
+            <input type="text" id="key"
+                   name="key" disabled class="form-control" required value="{{ $page->key }}"/>
+        </div>
+
 {{--        <div class="form-group">--}}
 {{--            <label for="category_id">Chọn danh mục</label>--}}
 {{--            <select name="category_id" id="category_id" class="form-control">--}}

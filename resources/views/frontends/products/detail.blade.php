@@ -7,8 +7,8 @@
             'link' => url('/')
         ],
         1 => [
-        'title' => 'Danh sách sản phẩm',
-            'link' => url('danh-sach-san-pham.html')
+        'title' => 'Danh sách acc',
+            'link' => url('danh-sach-danh-sach-acc.html')
         ],
         2 => [
         'title' => $product['name'],
@@ -17,15 +17,42 @@
         ]])
         <div class="row">
             <div class="detail-content-wrap con-md-8 col-sm-8 col-xs-12">
-                <h2 class="news-title">
-                    {{ $product['name'] }}
-                </h2>
-                <div class="avatar-product">
-                    <img src="{{ asset('uploads/' . $product['avatar']) }}"
-                         title="{{ $product['name'] }}"
-                         alt="{{ $product['name'] }}"
-                         class="img-responsive">
+                <div class="row">
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="detail-avatar avatar-product">
+                            <img src="{{ asset('uploads/' . $product['avatar']) }}"
+                                 title="{{ $product['name'] }}"
+                                 alt="{{ $product['name'] }}"
+                                 class="img-responsive">
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <h2 class="news-title">
+                            {{ $product['name'] }}
+                        </h2>
+                        <ul class="info-ul">
+                            <li>
+                                <strong>Thể loại</strong>: <span class="text-red">{{ $product['type'] }}</span>
+                            </li>
+                        </ul>
+                        <div class="summary">
+                            {!! $product['summary'] !!}
+                        </div>
+                        <div class="menu-active product-price">
+                            {{ number_format($product['price'], NULL, NULL, '.') }}đ <sup>ATM</sup>
+                        </div>
+                        <ul class="info-ul">
+                            <li>
+                                <strong>Số Vip</strong>: <span class="text-red">{{ $product['vip_total'] ? $product['vip_total'] : 0 }}</span>
+                            </li>
+                            <li>
+                                <strong>Vip Ingame</strong>: <span class="text-red">{{ $product['vip_ingame'] ? $product['vip_ingame'] : 0 }}</span>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
+
+
                 <div class="product-social">
                     @include('includes.social', ['current_url' => url()->current()])
                 </div>
@@ -68,7 +95,7 @@
                 </div>
             </div>
             <div class="news-relative-wrap col-md-4 col-sm-4 col-xs-12">
-                <h2 class="link-category-item">Sản phẩm khác</h2>
+                <h2 class="link-category-item">Xem acc khác</h2>
                 <ul class="news-relative">
                     @foreach($product_relatives AS $product)
                         <li>
@@ -82,7 +109,24 @@
                             <h2 class="detail-relative-content">
                                 <a href="{{ Helper::getUrlFriendlyProduct($product['name'], $product['id']) }}">
                                 {{ $product['name'] }}
+                                </a>
+                                <div class="price-relative">
+                                    {{ number_format($product['price'], NULL, NULL, '.') }}đ <sup>ATM</sup>
+                                </div>
                             </h2>
+
+                            {{--                            <div class="menu-active product-price">--}}
+                            {{--                                {{ number_format($product['price'], NULL, NULL, '.') }}đ <sup>ATM</sup>--}}
+                            {{--                                <ul class="info-ul">--}}
+                            {{--                                    <li>--}}
+                            {{--                                        Số Vip: {{ $product['vip_total'] ? $product['vip_total'] : 0 }}--}}
+                            {{--                                    </li>--}}
+                            {{--                                    <li>--}}
+                            {{--                                        Vip Ingame: {{ $product['vip_ingame'] ? $product['vip_ingame'] : 0 }}--}}
+                            {{--                                    </li>--}}
+                            {{--                                </ul>--}}
+                            {{--                            </div>--}}
+
                         </li>
                     @endforeach
                 </ul>

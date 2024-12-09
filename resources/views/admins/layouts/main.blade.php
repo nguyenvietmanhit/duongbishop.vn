@@ -92,21 +92,21 @@
             <!-- sidebar menu: : style can be found in sidebar.less -->
             <ul class="sidebar-menu" data-widget="tree">
                 <li class="header">LAOYOUT ADMIN</li>
-                <li>
-                    <a href="{{ url('admin/categories') }}">
-                        <i class="fa fa-list"></i> <span>Quản lý danh mục</span>
-                    </a>
-                </li>
+{{--                <li>--}}
+{{--                    <a href="{{ url('admin/categories') }}">--}}
+{{--                        <i class="fa fa-list"></i> <span>Quản lý danh mục</span>--}}
+{{--                    </a>--}}
+{{--                </li>--}}
                 <li>
                     <a href="{{ url('admin/products') }}">
-                        <i class="fa fa-list"></i> <span>Quản lý sản phẩm</span>
+                        <i class="fa fa-list"></i> <span>Quản lý acc</span>
                     </a>
                 </li>
-                <li>
-                    <a href="{{ url('admin/news') }}">
-                        <i class="fa fa-list"></i> <span>Quản lý tin tức</span>
-                    </a>
-                </li>
+{{--                <li>--}}
+{{--                    <a href="{{ url('admin/news') }}">--}}
+{{--                        <i class="fa fa-list"></i> <span>Quản lý tin tức</span>--}}
+{{--                    </a>--}}
+{{--                </li>--}}
                 <li>
                     <a href="{{ url('admin/pages') }}">
                         <i class="fa fa-list"></i> <span>Quản lý trang tĩnh</span>
@@ -219,7 +219,7 @@
 
 <script type="text/javascript">
     // Create global variables
-    var url_base = '{{ url('/') }}';
+    var url_base = '{{ env('APP_URL') }}';
 </script>
 
 <!-- jQuery 3 -->

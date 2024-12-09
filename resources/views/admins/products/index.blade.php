@@ -10,35 +10,62 @@
 {{--@endsection()--}}
 @section('content')
     <div class="content-list">
-        <a href="{{ url('admin/product/create') }}" class="btn btn-primary">Thêm sản phẩm mới</a>
+        <a href="{{ url('admin/product/create') }}" class="btn btn-primary">Thêm acc mới</a>
         <h1>
-            Danh sách sản phẩm
+            Danh sách acc
         </h1>
+
+        <form method="GET" action="" class="form-search">
+            <div class="">
+                {{--                <div class="col-md-3 col-sm-3 col-12">--}}
+                <div class="form-group">
+                    <input type="text" name="keyword" value="{{ request()->get('keyword') }}"
+                           placeholder="Tìm theo mã acc, Thể loại, Thông tin acc, giá hoặc mô tả acc ..." class="form-control"/>
+                </div>
+                {{--                </div>--}}
+                {{--                <div class="col-md-3 col-sm-3 col-12">--}}
+                <div class="form-group">
+                    <input type="submit" name="search" value="Tìm kiếm" class="btn-search btn btn-success"/>
+                    <a href="{{ url('/admin/products') }}" class="btn btn-default">Hủy tìm</a>
+                </div>
+                {{--                </div>--}}
+            </div>
+        </form>
+
+        <h3>Tổng số <span class="red">{{ $products->total() }} acc</span> được tìm thấy</h3>
+        <br />
         <table class="table table-striped table-responsive">
             <tr>
-                <th>Tên sản phẩm</th>
-                <th>Danh mục</th>
+                <th>Mã acc</th>
+                <th>Thể loại</th>
+                <th>Thông tin acc</th>
                 <th>Ảnh đại diện</th>
                 <th>Giá</th>
+                <th>Trạng thái</th>
                 <th>Ngày tạo</th>
                 <th></th>
             </tr>
             <?php
 
-          ?>
+            ?>
             @foreach ($products AS $product)
                 <tr>
-                    <td>{{ $product->name }}</td>
-                    <td>{{ \App\Models\Category::getCategoryName($product->category_id) }}</td>
+                    <td>{{ $product->code }}</td>
+                    <td>{{ $product->type }}</td>
+                    <td>{!! $product->name !!}</td>
+                    {{--                    <td>{{ \App\Models\Category::getCategoryName($product->category_id) }}</td>--}}
                     <td>
                         @if($product->avatar)
-                            <img src="{{ asset('uploads/' . $product->avatar) }}" class="product-avatar" height="80px" />
+                            <img src="{{ asset('uploads/' . $product->avatar) }}" class="product-avatar" height="80px"/>
                         @endif
                     </td>
                     <td>{{ number_format($product->price) }}</td>
+                    <td>
+                        {{ Helper::getStatusText($product->status) }}
+                    </td>
                     <td>{{ date('d-m-Y', strtotime($product->created_at)) }}</td>
                     <td>
-                        <a href="{{ url('admin/product/edit', ['id' => $product->id]) }}" title="Sửa sản phẩm này">
+                        <a href="{{ url('admin/product/edit', ['id' => $product->id]) }}" title="Sửa acc này">
                             <i class="fa fa-pencil-alt"></i>
                         </a> &nbsp;
                         <form class="delete" method="POST"

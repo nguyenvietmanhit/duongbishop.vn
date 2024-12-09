@@ -7,16 +7,16 @@
             'link' => url('/')
         ],
         1 => [
-          'title' => isset($category) ? $category['name'] : '#',
+          'title' => isset($category) ? $category['name'] : isset($title) ? $title : '#',
             'link' => isset($category) ? Helper::getUrlFriendlyCategory($category['name'], $category['id']) : '#'
         ],
         2 => [
-        'title' => 'Danh sách sản phẩm',
+        'title' => 'Danh sách acc',
             'active' => TRUE
         ],
         ]])
         <h1 class="post-list-title hover-show-edit">
-            Tất cả sản phẩm
+            {{ isset($title) ? $title : 'Tất cả acc' }}
             @if(isset($search) && $search)
                 tìm thấy với từ khóa <strong>{{ $search }}</strong>
             @endif
@@ -25,9 +25,9 @@
             @endif
         </h1>
         @if($products->total() > 0)
-            <div class="note-product text-center">
-                Để xem ảnh dạng slide, click vào ảnh. Xem chi tiết sản phẩm, click tên bài viết
-            </div>
+{{--            <div class="note-product text-center">--}}
+{{--                Để xem ảnh dạng slide, click vào ảnh. Xem chi tiết sản phẩm, click tên bài viết--}}
+{{--            </div>--}}
             <div class="row">
                 @foreach($products AS $product)
                     <div class="col-md-4 col-sm-4 col-xs-12 hover-show-edit product-item">

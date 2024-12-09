@@ -41,6 +41,9 @@ class Helper
     const COLUMN_REPORTING_STARTS = 'Reporting Starts';
     const COLUMN_REPORTING_ENDS = 'Reporting Ends';
 
+    const STATUS_ACTIVE = 1;
+    const STATUS_SOLD = 0;
+    const STATUS_DISABLED = -1;
 
     const TYPE_CAMPAIGN = 'campaign';
     const TYPE_AD_GROUP = 'ad_group';
@@ -82,10 +85,10 @@ class Helper
     const CHAR_BIRTHDAY_ROW_3 = [1, 4, 7];
 
     public static $url_print_pdf = '';
-    public static $title_page = '';
-    public static $seo_title = '';
-    public static $seo_description = '';
-    public static $seo_keyword = '';
+    public static $title_page = 'Dượng Bi Shop - Shop Acc Đột Kích';
+    public static $seo_title = 'Dượng Bi Shop - Shop Acc Đột Kích';
+    public static $seo_description = 'Dượng Bi Shop - Shop Acc Đột Kích';
+    public static $seo_keyword = 'Dượng Bi Shop - Shop Acc Đột Kích';
 
 
     public static function getDateRange($strDateFrom, $strDateTo)
@@ -126,22 +129,22 @@ class Helper
 
     public static function getSeoTitle()
     {
-        return self::$seo_title . " | report.mediaz.vn";
+        return self::$seo_title;
     }
 
     public static function getSeoDescription()
     {
-        return self::$seo_description . " | report.mediaz.vn";
+        return self::$seo_description ;
     }
 
     public static function getSeoKeyword()
     {
-        return self::$seo_keyword . " | report.mediaz.vn";
+        return self::$seo_keyword;
     }
 
     public static function getTitlePage()
     {
-        return self::$title_page . " | report.mediaz.vn";
+        return self::$title_page;
     }
 
     public static function getTokens($token)
@@ -171,7 +174,7 @@ class Helper
 
     public static function getUrlFriendlyProduct($name, $id)
     {
-        return 'san-pham/' . self::convertStringToUnsigned($name) . "-$id.html";
+        return 'chi-tiet-acc-' . self::convertStringToUnsigned($name) . "-$id.html";
     }
 
     public static function getUrlFriendlyNews($name, $id)
@@ -184,4 +187,29 @@ class Helper
         return 'danh-muc/' . self::convertStringToUnsigned($name) . "-$id.html";
     }
 
+    public static function getStatusText($status)
+    {
+        $status_text = '';
+        switch ($status) {
+            case self::STATUS_ACTIVE:
+                $status_text = 'Hiển thị';
+                break;
+            case self::STATUS_SOLD:
+                $status_text = 'Acc đã bán';
+                break;
+            case self::STATUS_DISABLED:
+                $status_text = 'Không hiển thị';
+                break;
+        }
+        return $status_text;
+    }
+
+    public static function truncateStringByDot($string)
+    {
+        if (mb_strlen($string) > 80) {
+            echo mb_substr($string, 0, 80) . "..";
+        } else {
+            echo $string;
+        }
+    }
 }

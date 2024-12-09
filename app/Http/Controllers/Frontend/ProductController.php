@@ -28,8 +28,12 @@ class ProductController extends FrontendController
 
     public function detail(Request $request, $product_name, $product_id)
     {
-        $product = Product::has('categories')->with('categories')->findOrFail($product_id);
-        $product_relatives = Product::has('categories')->with('categories')->where('products.id', '!=', $product_id)
+        $product = Product::where('status', \Helper::STATUS_ACTIVE)->findOrFail($product_id);
+        \Helper::$seo_title = $product->name;
+        \Helper::$seo_description = $product->name;
+        \Helper::$seo_keyword = $product->name;
+        $product_relatives = Product::where('products.id', '!=', $product_id)
+            ->where('status', \Helper::STATUS_ACTIVE)
             ->take(10)->get();
         return view('frontends/products/detail', [
             'product' => $product,
@@ -47,11 +51,21 @@ class ProductController extends FrontendController
         }
 
 
-        $products = Product::has('categories')->with('categories')
-            ->whereRaw($where_search)->paginate(12);
+        $products = Product::whereRaw($where_search)->where('status', \Helper::STATUS_ACTIVE)->paginate(12);
         return view('frontends/products/all', [
             'products' => $products,
             'search' => $search,
+        ]);
+    }
+
+    public function productSold() {
+        $products = Product::where('status', \Helper::STATUS_SOLD)
+            ->orderBy('price', 'DESC')
+            ->orderBy('created_at', 'DESC')->paginate(36);
+
+        return view('frontends/products/all', [
+            'products' => $products,
+            'title' => 'Các acc shop đã bán'
         ]);
     }
 
@@ -65,8 +79,8 @@ class ProductController extends FrontendController
 
     public function allProductByCategory($category_name, $category_id)
     {
-        $products = Product::has('categories')->with('categories')
-            ->where('category_id', $category_id)
+        $products = Product::where('category_id', $category_id)
+            ->where('status', \Helper::STATUS_ACTIVE)
             ->paginate(12);
         $category = Category::where('id', $category_id)->first()->toArray();
         return view('frontends/products/all', [
