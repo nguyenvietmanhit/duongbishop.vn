@@ -13,8 +13,12 @@ use Illuminate\Support\Facades\App;
 class PageController extends AdminController
 {
 
+    public function __construct()
+    {
+        die("");
+    }
 
-  /**
+    /**
    * Display a listing of the resource.
    *
    * @return \Illuminate\Http\Response
